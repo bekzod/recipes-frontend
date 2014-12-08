@@ -6,6 +6,6 @@ var app = new EmberApp();
 
 app.import('bower_components/_normalize.scss/_normalize.scss')
 
-app.import('bower_components/typeahead.js/dist/typeahead.bundle.min.js')
+app.import('bower_components/jquery.easing/js/jquery.easing.min.js')
 
 module.exports = app.toTree();
