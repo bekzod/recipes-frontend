@@ -1,38 +1,53 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  classNames:['type-ahead'],
 
+export default Ember.Component.extend({
+  classNames:['type-ahead-container'],
+  tags:[],
   actions: {
-    completeTag: function(text){
-      var tagValue = this.get('inputValue');
-      if( tagValue ){
-        this.addTag( tagValue );
+    tagSelect: function(tag){
+      var tags = this.get('tags');
+      var hasTag = tags.any( function( t ){
+        return tag.id === t.id;
+      });
+
+      if( hasTag ){
+        var $tagEl = this.$('[data-tag-id="' + tag.id + '"]');
+        $tagEl.removeClass('wobble').addClass('animated wobble');
+      } else {
+        this.get('tags').pushObject(tag);
+        this.addTag( tag );
         this.set('inputValue','');
       }
     }
   },
 
-  addTag: function(){
-    var $tag = $('<div class="th-tag"/>').html( this.get('inputValueCorrected') );
-    this.$('.input-container').prepend( $tag );
+
+  addTag: function( tag ){
+    var $tag = $('<div class="th-tag cc-input"/>').html( tag.value );
+    this.$('.twitter-typeahead').append( $tag );
     var tagWidth = $tag.outerWidth();
     var tagHeight = $tag.outerHeight();
     var originPos = $tag.offset();
     $tag.detach();
-    var $wraper = $('<div class="tag-wrapper"/>').append($tag);
 
-    $wraper.css({
+    var $wrapper = $('<div class="tag-wrapper"/>')
+      .attr('data-tag-id', tag.id)
+      .append( $tag );
+
+    $wrapper.css({
       width: tagWidth,
       height: tagHeight
     });
 
-    this.$('.tag-container').append( $wraper );
-    var destinationPos = $wraper.offset();
+    this.$('.tag-container').append( $wrapper );
+    var destinationPos = $wrapper.offset();
 
     $tag.css({
       width: 300,
-      'z-index': 200,
+      'background-color': tag.color,
+      'border-color': tag.color,
+      'z-index': 2000,
       position: 'absolute',
       top: originPos.top,
       left: originPos.left
@@ -54,14 +69,6 @@ export default Ember.Component.extend({
       });
 
     });
-  },
-
-  inputValueCorrected:function(){
-    return (this.get('inputValue') || ' ').replace(/\s/g,'&nbsp;');
-  }.property('inputValue'),
-
-  initElements: function () {
-
-  }.on('init')
+  }
 
 });
