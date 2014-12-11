@@ -13,7 +13,11 @@ export default Ember.Component.extend({
 
       if( hasTag ){
         var $tagEl = this.$('[data-tag-id="' + tag.id + '"]');
-        $tagEl.removeClass('wobble').addClass('animated wobble');
+        $tagEl
+          .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass('animated wobble')
+          });
+        $tagEl.addClass('animated wobble');
       } else {
         this.get('tags').pushObject(tag);
         this.addTag( tag );
