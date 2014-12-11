@@ -13,21 +13,23 @@ export default Ember.Component.extend({
 
       if( hasTag ){
         var $tagEl = this.$('[data-tag-id="' + tag.id + '"]');
+        if( $tagEl.data('transitioning') ) return;
         $tagEl
           .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
             $(this).removeClass('animated wobble')
           });
         $tagEl.addClass('animated wobble');
       } else {
-        this.get('tags').pushObject(tag);
-        this.addTag( tag );
         this.set('inputValue','');
+        this.addTag( tag );
       }
     }
   },
 
 
   addTag: function( tag ){
+    this.get('tags').pushObject(tag);
+
     var $tag = $('<div class="th-tag cc-input"/>').html( tag.value );
     this.$('.twitter-typeahead').append( $tag );
     var tagWidth = $tag.outerWidth();
@@ -37,6 +39,7 @@ export default Ember.Component.extend({
 
     var $wrapper = $('<div class="tag-wrapper"/>')
       .attr('data-tag-id', tag.id)
+      .data('transitioning', true)
       .append( $tag );
 
     $wrapper.css({
@@ -67,9 +70,10 @@ export default Ember.Component.extend({
         top: destinationPos.top,
         left: destinationPos.left
       },800,'easeOutCubic',function(){
-        $(this).css({
-          'position': 'static',
-        })
+        $(this)
+          .css('position', 'static')
+          .parent()
+          .data('transitioning', false);
       });
 
     });
