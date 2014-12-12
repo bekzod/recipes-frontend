@@ -10,7 +10,6 @@ var engine = new Bloodhound({
         "startkey=" + '"' + query + '"',
         "endkey=" + '"' + query + "\ufff0" + '"'
       ];
-      console.warn(dbUrl + '?' + params.join('&'));
       return dbUrl + '?' + params.join('&');
     },
     url: '/api/db/ingredients/_design/main/_view/by_permutation',
