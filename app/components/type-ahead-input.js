@@ -3,7 +3,26 @@ import Ember from 'ember';
 /* globals Em, Bloodhound */
 var engine = new Bloodhound({
   name: 'animals',
-  remote: '/api/ingredients?q=%QUERY',
+  remote: {
+    replace : function(dbUrl,query){
+      var params = [
+        "include_docs=true",
+        "startkey=" + '"' + query + '"',
+        "endkey=" + '"' + query + "\ufff0" + '"'
+      ];
+      console.warn(dbUrl + '?' + params.join('&'));
+      return dbUrl + '?' + params.join('&');
+    },
+    url: '/api/db/ingredients/_design/main/_view/by_permutation',
+    filter: function(json){
+      return json.rows.map(function(obj){
+        return {
+          color: obj.doc.color,
+          value: obj.doc.name
+        }
+      });
+    }
+  },
   datumTokenizer: function(d) {
     return Bloodhound.tokenizers.whitespace(d.val);
   },
@@ -32,7 +51,7 @@ export default Ember.TextField.extend({
     }.bind(this))
     .on('typeahead:cursorremoved typeahead:nomatch', function(){
       this.$().css( 'border-color', '#333');
-    }.bind(this));
+    }.bind(this))
 
   }.on('didInsertElement'),
 

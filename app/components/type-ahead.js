@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 
 export default Ember.Component.extend({
-  classNames:['type-ahead-container'],
-  tags:[],
+  classNames: ['type-ahead-container'],
+  tags: [],
   actions: {
     tagSelect: function(tag){
       this.addTag( tag );
