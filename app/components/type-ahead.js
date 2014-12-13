@@ -10,6 +10,12 @@ export default Ember.Component.extend({
     }
   },
 
+  makeTags: function(){
+    this.get('tags').forEach( function(tag){
+      this.createTag(tag);
+    }, this);
+  }.on('didInsertElement'),
+
   removeTag: function( $tagEl ){
     var tags = this.get('tags');
     var tagId = $tagEl.data('tag-id');
@@ -25,7 +31,6 @@ export default Ember.Component.extend({
   },
 
   addTag: function( tag ){
-    var self = this;
     var tags = this.get('tags');
     var hasTag = tags.any( function( t ){ return tag.id === t.id; });
 
@@ -39,31 +44,47 @@ export default Ember.Component.extend({
         .addClass('animated wobble');
     } else {
       this.get('tags').pushObject(tag);
+      this.createTag(tag, true);
+    }
+  },
 
-      var $tag = $('<div class="th-tag cc-input"/>').html( tag.value );
-      this.$('.twitter-typeahead').append( $tag );
-      var tagWidth = $tag.outerWidth();
-      var tagHeight = $tag.outerHeight();
-      var originPos = $tag.offset();
-      $tag.detach();
+  createTag: function(tag, isAnimated){
+    var self = this;
+    var $tag = $('<div class="th-tag cc-input"/>')
+      .text( tag.value )
+      .appendTo( this.$('.twitter-typeahead') );
 
-      var $wrapper = $('<div class="tag-wrapper"/>')
-        .attr('data-tag-id', tag.id)
-        .data('transitioning', true)
-        .css({
-          width: tagWidth,
-          height: tagHeight
-        })
-        .append( $tag );
+    var tagWidth = $tag.outerWidth();
+    var tagHeight = $tag.outerHeight();
+    var originPos = $tag.offset();
 
-      this.$('.tag-container').append( $wrapper );
-      var destinationPos = $wrapper.offset();
-
-      $tag.css({
-        width: 300,
+    $tag
+      .detach()
+      .css({
         'background-color': tag.color,
         'border-color': tag.color,
+        'border-radius': '20px'
+      });
+
+    var $wrapper = $('<div class="tag-wrapper"/>')
+      .attr('data-tag-id', tag.id)
+      .css({
+        width: tagWidth,
+        height: tagHeight
+      })
+      .one('click', function(){
+        self.removeTag($(this));
+      })
+      .append( $tag )
+      .appendTo( this.$('.tag-container') );
+
+    if( isAnimated ){
+      var destinationPos = $wrapper.offset();
+      $wrapper.data('transitioning', true)
+      $tag.css({
+        width: 300,
         'z-index': 2000,
+        'border-radius': 0,
         position: 'absolute',
         top: originPos.top,
         left: originPos.left
@@ -71,7 +92,7 @@ export default Ember.Component.extend({
 
       $tag.animate({
         width: tagWidth,
-        'border-radius': '20px',
+        'border-radius': 20
       }, 500,'easeOutQuint', function(){
 
         $(this).animate({
@@ -85,15 +106,11 @@ export default Ember.Component.extend({
               'left': 0
             })
             .parent()
-            .one('click', function(){
-              self.removeTag($(this));
-            })
             .css('position','relative')
             .data('transitioning', false);
         });
-
       });
     }
-  }
+  },
 
 });
