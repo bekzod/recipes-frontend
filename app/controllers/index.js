@@ -5,7 +5,9 @@ export default Ember.Controller.extend({
   tagsNameMapped: Em.computed.mapBy('tags','value'),
 
   observeTag: function(){
-    this.set('tagsName', this.get('tagsNameMapped'));
+    Em.run.once(this, function(){
+      this.set('tagsName', this.get('tagsNameMapped'));
+    });
   }.observes('tags.@each'),
 
   tagsName: [],
