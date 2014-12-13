@@ -9,5 +9,6 @@ app.import('bower_components/animate.css/animate.min.css');
 
 app.import('bower_components/typeahead-hacked/type-ahead-hacked.js');
 app.import('bower_components/jquery.easing/js/jquery.easing.min.js');
+app.import('bower_components/ic-ajax/dist/globals/main.js');
 
 module.exports = app.toTree();

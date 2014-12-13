@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['type-ahead-container'],
-  tags: [],
+
   actions: {
     tagSelect: function(tag){
       this.addTag( tag );
@@ -35,8 +35,8 @@ export default Ember.Component.extend({
       $tagEl
         .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
           $(this).removeClass('animated wobble')
-        });
-      $tagEl.addClass('animated wobble');
+        })
+        .addClass('animated wobble');
     } else {
       this.get('tags').pushObject(tag);
 
@@ -50,12 +50,11 @@ export default Ember.Component.extend({
       var $wrapper = $('<div class="tag-wrapper"/>')
         .attr('data-tag-id', tag.id)
         .data('transitioning', true)
+        .css({
+          width: tagWidth,
+          height: tagHeight
+        })
         .append( $tag );
-
-      $wrapper.css({
-        width: tagWidth,
-        height: tagHeight
-      });
 
       this.$('.tag-container').append( $wrapper );
       var destinationPos = $wrapper.offset();

@@ -1,8 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  model: function(){
-    console.warn('test');
-    return null;
-  }
+  tags: [],
+
+  observeTag: function(){
+    this.set('tagsName', this.get('tags').mapBy('value'));
+  }.observes('tags.@each'),
+
+  tagsName: [],
+  queryParams: [{
+    tagsName: 'tags'
+  }]
 });

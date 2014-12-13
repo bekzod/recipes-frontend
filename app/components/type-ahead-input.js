@@ -16,6 +16,7 @@ var engine = new Bloodhound({
     filter: function(json){
       return json.rows.map(function(obj){
         return {
+          id: obj.doc._id,
           color: obj.doc.color,
           value: obj.doc.name
         }
