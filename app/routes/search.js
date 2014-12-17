@@ -17,7 +17,11 @@ export default Ember.Route.extend({
         'keys=["' + tags.mapBy('value').join('","') + '"]'
       ].join('&');
       var url = dbUrl + '?' + queryString;
-      // return ic.ajax.request( url )
+      return new Em.RSVP.Promise(function(resolve,reject){
+        setTimeout(function(){
+          resolve({});
+        }, 6000);
+      });
     }
   }
 
