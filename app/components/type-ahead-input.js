@@ -7,6 +7,7 @@ var engine = new Bloodhound({
     replace : function(dbUrl,query){
       var params = [
         "include_docs=true",
+        "limit=5",
         "startkey=" + '"' + query + '"',
         "endkey=" + '"' + query + "\ufff0" + '"'
       ];
@@ -18,7 +19,7 @@ var engine = new Bloodhound({
         return {
           id: obj.doc._id,
           color: obj.doc.color,
-          value: obj.doc.name
+          value: obj.key
         }
       });
     }

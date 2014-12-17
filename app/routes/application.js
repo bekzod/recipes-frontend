@@ -1,10 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  queryParams: {
+    "tags": { refreshModel: false }
+  },
 
   model: function(params, transition){
-    var requests = {};
-
     if( params.tagsName ){
       var dbUrl = '/api/db/ingredients/_design/main/_view/by_permutation';
       var queryString = [
@@ -13,7 +14,7 @@ export default Ember.Route.extend({
       ].join('&');
       var url = dbUrl + '?' + queryString;
 
-      requests.tags = ic.ajax.request( url )
+      return ic.ajax.request( url )
         .then(function(json){
           var a = json.rows.map( function(obj){
             return {
@@ -25,13 +26,6 @@ export default Ember.Route.extend({
           return Em.A(a);
         });
     }
-
-    return Em.RSVP.hash(requests);
-  },
-
-  setupController: function(controller, model) {
-    this._super(controller, model);
-    controller.set('tags', model.tags );
   },
 
   deserializeQueryParam: function(value, urlKey, defaultValueType) {

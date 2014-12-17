@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-
+/*global $ */
 export default Ember.Component.extend({
   classNames: ['type-ahead-container'],
 
@@ -27,7 +27,12 @@ export default Ember.Component.extend({
       }
     };
     tags.removeAt(index);
-    $tagEl.remove();
+
+    $tagEl
+      .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+        $(this).remove();
+      })
+      .addClass('animated bounceOut');
   },
 
   addTag: function( tag ){
@@ -63,7 +68,7 @@ export default Ember.Component.extend({
       .css({
         'background-color': tag.color,
         'border-color': tag.color,
-        'border-radius': '20px'
+        'border-radius': 20
       });
 
     var $wrapper = $('<div class="tag-wrapper"/>')
@@ -84,7 +89,7 @@ export default Ember.Component.extend({
       $tag.css({
         width: 300,
         'z-index': 2000,
-        'border-radius': 0,
+        'border-radius': 8,
         position: 'absolute',
         top: originPos.top,
         left: originPos.left
