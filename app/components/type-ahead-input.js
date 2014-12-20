@@ -13,7 +13,7 @@ var engine = new Bloodhound({
       ];
       return dbUrl + '?' + params.join('&');
     },
-    url: '/api/db/ingredients/_design/main/_view/by_permutation',
+    url: '/api/db/ingredients/_design/ingredients/_view/by_permutation',
     filter: function(json){
       return json.rows.map(function(obj){
         return {

@@ -1,1 +1,13 @@
 {{outlet}}
+
+<ul>
+  {{#each item in model}}
+    <li>
+      <h2>{{item.name}}</h2>
+      {{#each ingre in item.ingredients}}
+        <p>{{ingre}}</p>
+      {{/each}}
+    </li>
+
+  {{/each}}
+</ul>

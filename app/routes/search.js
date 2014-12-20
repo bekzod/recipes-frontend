@@ -1,27 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
   actions: {
     refreshRoute: function(){
       this.refresh();
     }
   },
-
+  modelOffset: 0,
   model: function(){
+    console.warn();
     var tags = this._super.apply( this, arguments );
     if( tags && tags.length > 1 ){
-      var dbUrl = '/api/db/ingredients/_design/main/_view/by_permutation';
-      var queryString = [
-        'include_docs=true',
-        'keys=["' + tags.mapBy('value').join('","') + '"]'
-      ].join('&');
-      var url = dbUrl + '?' + queryString;
-      return new Em.RSVP.Promise(function(resolve,reject){
-        setTimeout(function(){
-          resolve({});
-        }, 6000);
-      });
+      return this.get('recipeSearcher').getRecepies( tags.mapBy('value') );
+    } else {
+      return Em.A();
     }
   }
 

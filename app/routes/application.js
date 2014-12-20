@@ -16,8 +16,8 @@ export default Ember.Route.extend({
   },
 
   model: function(params, transition){
-    if( params.tagsName ){
-      var dbUrl = '/api/db/ingredients/_design/main/_view/by_permutation';
+    if( params.tagsName && params.tagsName.length ){
+      var dbUrl = '/api/db/ingredients/_design/ingredients/_view/by_permutation';
       var queryString = [
         'include_docs=true',
         'keys=["' + params.tagsName.join('","') + '"]'
@@ -35,6 +35,8 @@ export default Ember.Route.extend({
           });
           return Em.A(a);
         });
+    } else {
+      return [];
     }
   },
 
