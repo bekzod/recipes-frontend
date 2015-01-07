@@ -4,9 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'recipes-front',
     environment: environment,
-    baseURL: '/search',
+    baseURL: '/',
     locationType: 'auto',
-    ENABLE_ALL_FEATURES: true,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
