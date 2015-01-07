@@ -2,26 +2,6 @@
 
 <div class="recipes-container">
   {{#each item in model}}
-      <div class="recipe-item">
-        <div class="recipe-name">
-          {{item.name}}
-        </div>
-        <div class="recipe-ingredients">
-          <div class="recipe-tag-container">
-            {{#each ingre in item.ingredients}}
-              <div class='tag'>{{ingre}}</div>
-            {{/each}}
-            {{#each ingre in item.ingredients}}
-              <div class='tag'>{{ingre}}</div>
-            {{/each}}
-            {{#each ingre in item.ingredients}}
-              <div class='tag'>{{ingre}}</div>
-            {{/each}}
-            {{#each ingre in item.ingredients}}
-              <div class='tag'>{{ingre}}</div>
-            {{/each}}
-          </div>
-        </div>
-      </div>
+    {{recipe-item title=item.name tags=item.ingredients}}
   {{/each}}
 </div>
