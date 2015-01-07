@@ -1,7 +1,17 @@
-<div class="recipes-container">
-  {{#each item in model}}
-    {{#link-to 'recipe' item}}
-      {{recipe-item title=item.name tags=item.ingredients}}
-    {{/link-to}}
-  {{/each}}
-</div>
+{{#if model.length}}
+  <div class="search-result">
+
+    <h2>{{model.length}} recipes found</h2>
+    <div class="recipes-container">
+      {{#each item in model}}
+        {{#link-to 'recipe' item}}
+          {{recipe-item title=item.name tags=item.ingredients}}
+        {{/link-to}}
+      {{/each}}
+    </div>
+  </div>
+{{else}}
+
+  <div class='title-with-margin'>No recipes found</div>
+
+{{/if}}

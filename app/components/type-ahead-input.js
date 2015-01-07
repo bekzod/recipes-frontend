@@ -51,7 +51,7 @@ export default Ember.TextField.extend({
       this.$().css('border-color',tag.color);
     }.bind(this))
     .on('typeahead:cursorremoved typeahead:nomatch', function(){
-      this.$().css( 'border-color', '#333');
+      this.$().css( 'border-color', 'white');
     }.bind(this))
 
   }.on('didInsertElement'),
@@ -59,7 +59,7 @@ export default Ember.TextField.extend({
   syncValue: function(){
     var val = this.get('value');
     if( !val ){
-      this.$().css('border-color','#333');
+      this.$().css('border-color','white');
     }
   }.observes('value')
 

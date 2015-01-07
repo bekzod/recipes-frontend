@@ -7,7 +7,7 @@
 }
 
 .cc-input{
-  font-size: 17px;
+  font-size: 18px;
   font-family: "arial", sans-serif;
   letter-spacing: normal;
   word-spacing: normal;
@@ -28,38 +28,41 @@
   background: none !important;
   appearance: none;
   -webkit-appearance: none;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .tt-input {
-  border: 2px solid white !important;
+  border: 2px solid white;
 }
 
 .tt-hint {
-  color: #666;
+  color: #888;
 }
 
 .tt-dropdown-menu {
   width:360px;
+  color: white;
   box-sizing: border-box;
   padding: 8px 0 8px 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  // border-radius: 8px;
+  // border: 1px solid #ccc;
+  background:none;
 }
 
 .tt-suggestion {
   padding: 3px 20px;
   font-size: 18px;
   line-height: 24px;
+  background: none;
   p {
     margin: 0;
   }
 }
 
 .tt-suggestion.tt-cursor {
-  color: #fff;
-  background-color: #0097cf;
+  color: #2C3E50;
+  background-color: white;
+  border-radius:10px;
 }
 
 

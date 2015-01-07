@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'recipes-front',
     environment: environment,
-    baseURL: '/',
+    baseURL: '/search',
     locationType: 'auto',
     ENABLE_ALL_FEATURES: true,
     EmberENV: {
