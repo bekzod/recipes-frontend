@@ -1,9 +1,2 @@
+{{type-ahead tags=tags}}
 {{outlet}}
-
-<div class="recipes-container">
-  {{#each item in model}}
-    {{#link-to 'recipe' item}}
-      {{recipe-item title=item.name tags=item.ingredients}}
-    {{/link-to}}
-  {{/each}}
-</div>
