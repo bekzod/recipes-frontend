@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
     Em.run.once(this, function(){
       this.set('tagsName', this.get('tagsNameMapped'));
     });
+    console.warn('test');
   }.observes('tags.@each'),
 
   tagsName: [],
