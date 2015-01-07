@@ -2,31 +2,29 @@ import Ember from 'ember';
 
 export default Ember.Object.extend({
   dbUrl: '/api/db/recipies/_design/recipes/_view/by_ingredients2',
-  makeQuery: function( ingredients ){
-    return [
-      'limit=8',
-      'group_level=' + ingredients.length,
-      'startkey=["' + ingredients.join('","') + '"]',
-      'endkey=["' + ingredients.join('","') + '",{}]'
-    ].join('&');
-  },
+  requestSkip: 0,
+  requestLimit: 8,
 
-  // currentRequest: null,
-  // currentIngrediants: [],
+  getRecepies: function( ingredients, exactMatch ){
+    var queryString = [
+      'skip=' + this.get('requestSkip'),
+      'limit=' + this.get('requestLimit'),
+    ];
 
-  // initSearch: function( ingredients ){
-  //   this.set('currentIngrediants', ingredients);
-  // },
+    if( exactMatch ){
+      queryString.push( 'key=["' + ingredients.join('","') + '"]' );
+    } else {
+      queryString.push(
+        'group_level=' + ingredients.length,
+        // 'key=["' + ingredients.join('","') + '"]',
+        'startkey=["' + ingredients.join('","') + '"]',
+        'endkey=["' + ingredients.join('","') + '",{}]'
+      );
+    }
 
-  // getResults: function(){
-  //   var ingredients = this.get('currentIngrediants');
-  //   return this.set('currentRequest', this.getRecepies( ingredients ) );
-  // },
-
-  getRecepies: function( ingredients ){
-    var url = this.get('dbUrl') + '?' + this.makeQuery( ingredients );
-    return ic.ajax.request( url ).then( function(json){
-      return Em.A(json.rows[0].value);
+    var url = this.get('dbUrl') + '?' + queryString.join('&');
+    return ic.ajax.request( url ).then( function( json ){
+      return Em.A(json.rows[0] && json.rows[0].value || []);
     });
   }
 });

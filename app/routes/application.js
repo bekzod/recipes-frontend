@@ -12,7 +12,7 @@ export default Ember.Route.extend({
   },
 
   queryParams: {
-    "tags": { refreshModel: false }
+    "tags": { refreshModel: true }
   },
 
   model: function(params, transition){

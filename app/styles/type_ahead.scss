@@ -77,10 +77,8 @@
 
 .th-tag {
   color:white;
-  display: inline-block;
   background: red;
   border: 2px solid red;
-
   .twitter-typeahead > & {
     position: absolute;
     left:0;

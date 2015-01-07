@@ -6,16 +6,13 @@ export default Ember.Route.extend({
       this.refresh();
     }
   },
-  modelOffset: 0,
+
   model: function(){
-    console.warn();
     var tags = this._super.apply( this, arguments );
     if( tags && tags.length > 1 ){
-      return this.get('recipeSearcher').getRecepies( tags.mapBy('value') );
+      return this.get('recipeSearcher').getRecepies( tags.mapBy('value'), true );
     } else {
       return Em.A();
     }
   }
-
-
 });

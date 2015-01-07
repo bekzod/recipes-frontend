@@ -1,13 +1,27 @@
 {{outlet}}
 
-<ul>
+<div class="recipes-container">
   {{#each item in model}}
-    <li>
-      <h2>{{item.name}}</h2>
-      {{#each ingre in item.ingredients}}
-        <p>{{ingre}}</p>
-      {{/each}}
-    </li>
-
+      <div class="recipe-item">
+        <div class="recipe-name">
+          {{item.name}}
+        </div>
+        <div class="recipe-ingredients">
+          <div class="recipe-tag-container">
+            {{#each ingre in item.ingredients}}
+              <div class='tag'>{{ingre}}</div>
+            {{/each}}
+            {{#each ingre in item.ingredients}}
+              <div class='tag'>{{ingre}}</div>
+            {{/each}}
+            {{#each ingre in item.ingredients}}
+              <div class='tag'>{{ingre}}</div>
+            {{/each}}
+            {{#each ingre in item.ingredients}}
+              <div class='tag'>{{ingre}}</div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
   {{/each}}
-</ul>
+</div>
