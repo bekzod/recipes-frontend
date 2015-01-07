@@ -7,22 +7,35 @@ export default Ember.Component.extend(ClickOutsideMixin,{
   listenForClickOutside: true,
 
   clickOutside: function(e){
-    console.warn('test');
+    this.set('isTagsHidden', true);
   },
 
   click: function(e){
-    var isTagsHidden = this.toggleProperty('isTagsHidden');
-
     var $container = $(e.target).parents('.tags-container')
-    if( $container[0] ){
-      $container.stop(true).animate({
-        'max-width': isTagsHidden ? '30%' : '80%'
-      },800);
+    if( $container.length ){
+      this.toggleProperty('isTagsHidden');
     }
   },
 
-  adjustSizeOfItemContainer: function(){
+  tagShowHide: function(){
+    var isTagsHidden = this.get('isTagsHidden');
+    this.$('.tags-container').stop(true).animate({
+      'max-width': isTagsHidden ? '35%' : '60%'
+    }, 800, function(){
 
+    }.bind(this));
+  }.observes('isTagsHidden'),
+
+  adjustSizeOfItemContainer: function(){
+    var totalWidth = 0;
+    var $container = this.$('.tags-sub-container');
+    $container.find('.tag').each( function(){
+      var $this = $(this)
+      totalWidth += $this.outerWidth()
+        + parseFloat($this.css('margin-left'))
+        + parseFloat($this.css('margin-right'));
+    });
+    $container.width( (totalWidth / 3) + 30 );
   }.on('didInsertElement'),
 
 });

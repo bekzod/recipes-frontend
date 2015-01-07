@@ -104,7 +104,7 @@ export default Ember.Component.extend({
           position: 'absolute',
           top: destinationPos.top,
           left: destinationPos.left
-        },600,'easeOutCubic',function(){
+        },800,'easeOutCubic',function(){
           $(this)
             .css({
               'top': 0,

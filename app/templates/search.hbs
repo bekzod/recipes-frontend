@@ -2,6 +2,8 @@
 
 <div class="recipes-container">
   {{#each item in model}}
-    {{recipe-item title=item.name tags=item.ingredients}}
+    {{#link-to 'recipe' item}}
+      {{recipe-item title=item.name tags=item.ingredients}}
+    {{/link-to}}
   {{/each}}
 </div>

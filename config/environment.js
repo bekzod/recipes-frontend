@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'recepies-front',
+    modulePrefix: 'recipes-front',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

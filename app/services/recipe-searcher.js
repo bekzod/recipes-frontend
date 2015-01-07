@@ -5,7 +5,7 @@ export default Ember.Object.extend({
   requestSkip: 0,
   requestLimit: 8,
 
-  getRecepies: function( ingredients, exactMatch ){
+  getRecipes: function( ingredients, exactMatch ){
     var queryString = [
       'skip=' + this.get('requestSkip'),
       'limit=' + this.get('requestLimit'),

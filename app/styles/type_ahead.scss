@@ -17,25 +17,26 @@
   text-align: start;
   padding: 8px 14px;
   box-sizing: border-box;
-  border: 2px solid #333;
+  border: 2px solid white;
+  color:white;
 }
 
 .tt-input, .tt-hint {
   @extend .cc-input;
   outline: none;
   width:360px;
-  background: none;
+  background: none !important;
   appearance: none;
   -webkit-appearance: none;
-  border: 2px solid #333;
-}
-
-.tt-input {
   border-radius: 8px;
 }
 
+.tt-input {
+  border: 2px solid white !important;
+}
+
 .tt-hint {
-  color: #999
+  color: #666;
 }
 
 .tt-dropdown-menu {
@@ -76,7 +77,8 @@
 
 
 .th-tag {
-  color:white;
+  color:#2C3E50;
+  font-weight:700;
   background: red;
   border: 2px solid red;
   .twitter-typeahead > & {

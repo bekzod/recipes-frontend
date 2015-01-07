@@ -2,7 +2,17 @@
 
 body {
   font-family: sans-serif;
+  background: #2C3E50;
 }
+
+#nprogress .bar {
+  background: #A7C520;
+}
+
+#nprogress .spinner-icon {
+  display: none;
+}
+
 
 %disable-select {
   -webkit-user-select: none;
@@ -19,34 +29,39 @@ body {
 
 
 .recipe-item {
+  position: relative;
   margin-top:20px;
   width: 100%;
   height: 100px;
   border-radius: 8px;
-  border: 2px #AEAEAE solid;
+  border: 2px white solid;
+  background: url('../img/background.jpg');
 
   .recipe-title {
     float: left;
     font-size: 50px;
+    padding: 0 50px;
     line-height: 100px;
     height: 100%;
+    color: #999;
   }
 
   .tags-container {
     height: 100%;
-    max-width: 30%;
+    max-width: 35%;
     float: right;
-    background:green;
+    overflow: hidden;
+
     .tags-sub-container{
       height:100%;
-      min-width: 1000px;
       .tag {
         @extend %disable-select;
         float:left;
         margin: 3px 5px;
-        padding: 5px 10px;
-        border-radius: 12px;
-        background: red;
+        color: #FF2D00;
+        border: 2px #FF2D00 solid;
+        padding: 3px 5px;
+        border-radius: 15px;
       }
     }
   }

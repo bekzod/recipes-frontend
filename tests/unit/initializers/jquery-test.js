@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { initialize } from 'recepies-front/initializers/jquery';
+import { initialize } from 'recipes-front/initializers/jquery';
 
 var container, application;
 

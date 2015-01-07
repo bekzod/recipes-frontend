@@ -10,7 +10,7 @@ export default Ember.Route.extend({
   model: function(){
     var tags = this._super.apply( this, arguments );
     if( tags && tags.length > 1 ){
-      return this.get('recipeSearcher').getRecepies( tags.mapBy('value'), true );
+      return this.get('recipeSearcher').getRecipes( tags.mapBy('value'), true );
     } else {
       return Em.A();
     }
