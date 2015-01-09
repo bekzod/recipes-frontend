@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   tags: Em.computed.alias('model'),
-  tagsNameMapped: Em.computed.mapBy('tags','value'),
+  tagsNameMapped: Em.computed.mapBy('tags','name'),
 
   observeTag: function(){
     Em.run.once(this, function(){

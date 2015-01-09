@@ -2,30 +2,19 @@ import Ember from 'ember';
 
 /* globals Em, Bloodhound */
 var engine = new Bloodhound({
-  name: 'animals',
   remote: {
-    replace : function(dbUrl,query){
-      var params = [
-        "include_docs=true",
-        "limit=5",
-        "startkey=" + '"' + query + '"',
-        "endkey=" + '"' + query + "\ufff0" + '"'
-      ];
-      return dbUrl + '?' + params.join('&');
-    },
-    url: '/api/db/ingredients/_design/ingredients/_view/by_permutation',
+    url: '/api/ingredient/query?q=%QUERY',
     filter: function(json){
-      return json.rows.map(function(obj){
-        return {
-          id: obj.doc._id,
-          color: obj.doc.color,
-          value: obj.key
-        }
+      return json.map(function(item){
+        var id = item._id || item.id ;
+        delete item._id;
+        item.id = id;
+        return item;
       });
     }
   },
   datumTokenizer: function(d) {
-    return Bloodhound.tokenizers.whitespace(d.val);
+    return Bloodhound.tokenizers.whitespace(d.name);
   },
   queryTokenizer: Bloodhound.tokenizers.whitespace
 });
@@ -37,14 +26,15 @@ export default Ember.TextField.extend({
     this.typeahead = this.$().typeahead({
       minLength: 2
     }, {
+      displayKey: 'name',
       source: engine.ttAdapter(),
     })
     .on('typeahead:autocompleted', function (e, tag) {
-      Em.run(this, function(){ this.set('value', tag.value); });
+      Em.run(this, function(){ this.set('value', tag.name); });
       this.$().css('border-color',tag.color);
     }.bind(this))
     .on('typeahead:selected', function (e, tag) {
-      Em.run(this, function(){ this.set('value',''); });
+      Em.run.schedule('afterRender',this, function(){ this.set('value',''); });
       this.sendAction('tagSelect', tag);
     }.bind(this))
     .on('typeahead:cursorchanged typeahead:match', function(e,tag){

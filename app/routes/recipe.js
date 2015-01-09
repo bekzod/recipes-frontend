@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   model: function(param){
-    var url = '/api/db/recipies/'+ param.recipe;
+    var url = '/api/db/recipes/'+ param.recipe;
     return ic.ajax.request( url );
   },
 

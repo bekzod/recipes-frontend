@@ -56,7 +56,7 @@ export default Ember.Component.extend({
   createTag: function(tag, isAnimated){
     var self = this;
     var $tag = $('<div class="th-tag cc-input"/>')
-      .text( tag.value )
+      .text( tag.name )
       .appendTo( this.$('.twitter-typeahead') );
 
     var tagWidth = $tag.outerWidth();

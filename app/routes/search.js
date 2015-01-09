@@ -2,31 +2,23 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   queryParams: {
-    "tags": { refreshModel: true }
+    "tags": { refreshModel: false }
   },
 
   model: function(params, transition){
     if( params.tagsName && params.tagsName.length ){
-      var dbUrl = '/api/db/ingredients/_design/ingredients/_view/by_permutation';
-      var queryString = [
-        'include_docs=true',
-        'keys=["' + params.tagsName.join('","') + '"]'
-      ].join('&');
-      var url = dbUrl + '?' + queryString;
-
-      return ic.ajax.request( url )
-        .then(function(json){
-          var a = json.rows.map( function(obj){
-            return {
-              id: obj.doc._id,
-              color: obj.doc.color,
-              value: obj.doc.name
-            }
-          });
-          return Em.A(a);
+      var dbUrl = '/api/ingredient';
+      var url = dbUrl + '?keys=' + params.tagsName.join(',');
+      return ic.ajax.request( url ).then(function(json){
+        return json.map( function(item){
+          var id = item._id;
+          delete item._id;
+          item.id = id;
+          return item;
         });
+      })
     } else {
-      return [];
+      return Em.A();
     }
   },
 
