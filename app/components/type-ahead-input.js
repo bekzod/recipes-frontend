@@ -3,7 +3,7 @@ import Ember from 'ember';
 /* globals Em, Bloodhound */
 var engine = new Bloodhound({
   remote: {
-    url: '/api/ingredient/query?q=%QUERY',
+    url: '__proxy/api/ingredient/query?q=%QUERY',
     filter: function(json){
       return json.map(function(item){
         var id = item._id || item.id ;
