@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
+var host = 'http://recipes-bek.s3.amazonaws.com/blured/';
+
 export default Ember.Controller.extend({
   imageUrl: function(){
     var name = this.get('model.image')
-    return name ? '/api/' + name : null;
+    return name ? host + name : null;
   }.property('model.image')
 
 });

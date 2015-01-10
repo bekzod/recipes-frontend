@@ -1,11 +1,13 @@
 import Ember from 'ember';
 
-var url = '/api/recipe';
+var url = '/__proxy/api/recipe';
 
 export default Ember.Route.extend({
   actions: {
     refreshRoute: function(){
-      this.refresh();
+      Em.run.next(this,function(){
+        this.refresh();
+      });
     }
   },
 

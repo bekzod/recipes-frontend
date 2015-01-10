@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import ClickOutsideMixin from '../mixins/click-outside';
 
-// var imagePath = 'http://recipes-bek.s3.amazonaws.com/images/';
-var imagePath = '/api/blured/';
+var host = 'http://recipes-bek.s3.amazonaws.com/blured/';
+
 export default Ember.Component.extend(ClickOutsideMixin,{
   classNames: ['recipe-item'],
   attributeBindings: ['style'],
@@ -16,7 +16,7 @@ export default Ember.Component.extend(ClickOutsideMixin,{
   background: function(){
     var image = this.get('image');
     if( image ){
-      return 'url(' + imagePath + image + ')';
+      return 'url(' + host + image + ')';
     } else {
       return '';
     }

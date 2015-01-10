@@ -7,7 +7,7 @@ export default Ember.Route.extend({
   },
 
   model: function(param){
-    var url = '/api/recipe/'+ param.recipe;
+    var url = '/__proxy/api/recipe/' + param.recipe;
     return ic.ajax.request( url );
   },
 

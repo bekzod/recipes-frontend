@@ -93,12 +93,11 @@ export default Ember.Component.extend({
         position: 'absolute',
         top: originPos.top,
         left: originPos.left
-      });
-
-      $tag.animate({
+      })
+      .animate({
         width: tagWidth,
         'border-radius': 20
-      }, 500,'easeOutQuint', function(){
+      }, 600,'easeOutQuint', function(){
 
         $(this).animate({
           position: 'absolute',
@@ -106,10 +105,7 @@ export default Ember.Component.extend({
           left: destinationPos.left
         },800,'easeOutCubic',function(){
           $(this)
-            .css({
-              'top': 0,
-              'left': 0
-            })
+            .css({ 'top': 0, 'left': 0 })
             .parent()
             .css('position','relative')
             .data('transitioning', false);

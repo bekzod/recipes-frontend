@@ -1,7 +1,5 @@
 {{#if model.length}}
   <div class="search-result">
-
-    <h2>{{model.length}} recipes found</h2>
     <div class="recipes-container">
       {{#each item in model itemController='recipe-item-wrapper'}}
         {{#link-to 'recipe' item._id}}

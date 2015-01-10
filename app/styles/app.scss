@@ -46,11 +46,8 @@ h1,h2,h3,h4{
   font-weight: 100;
 }
 
-.title-with-margin {
-
-  .recipes-container {
-
-  }
+.recipes-container {
+  margin-top: 50px;
 }
 
 .search-result {
@@ -81,7 +78,7 @@ h1,h2,h3,h4{
   .recipe-title {
     left:15px;
     top:10px;
-    z-index: 100;
+    z-index: 10;
     position: absolute;
     width:50%;
     font-size: 23px;
@@ -90,7 +87,7 @@ h1,h2,h3,h4{
   }
 
   .tags-container {
-    z-index: 200;
+    z-index: 50;
     position:absolute;
     top: 3px;
     right: 3px;

@@ -1,4 +1,4 @@
-var proxyPath = '/api/';
+var proxyPath = '/__proxy/';
 
 module.exports = function(app) {
   // For options, see:
@@ -8,7 +8,6 @@ module.exports = function(app) {
 
   app.use(proxyPath, function(req, res, next){
     // include root path in proxied request
-    req.url = path.join(proxyPath, req.url);
     proxy.web(req, res, { target: 'http://127.0.0.1:8080/' });
   });
 };
