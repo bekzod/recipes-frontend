@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 
   model: function(params, transition){
     if( params.tagsName && params.tagsName.length ){
-      var dbUrl = '/__proxy/api/ingredient';
+      var dbUrl = '/__/proxy/api/ingredient';
       var url = dbUrl + '?keys=' + params.tagsName.join(',');
       return ic.ajax.request( url ).then(function(json){
         return json.map( function(item){
