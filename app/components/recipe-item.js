@@ -1,10 +1,26 @@
 import Ember from 'ember';
 import ClickOutsideMixin from '../mixins/click-outside';
 
+// var imagePath = 'http://recipes-bek.s3.amazonaws.com/images/';
+var imagePath = '/api/blured/';
 export default Ember.Component.extend(ClickOutsideMixin,{
   classNames: ['recipe-item'],
+  attributeBindings: ['style'],
   isTagsHidden: true,
   listenForClickOutside: true,
+
+  style: function(){
+    return 'background:' + this.get('background') + ' center center no-repeat;';
+  }.property('background'),
+
+  background: function(){
+    var image = this.get('image');
+    if( image ){
+      return 'url(' + imagePath + image + ')';
+    } else {
+      return '';
+    }
+  }.property('image'),
 
   clickOutside: function(e){
     this.set('isTagsHidden', true);
@@ -35,7 +51,7 @@ export default Ember.Component.extend(ClickOutsideMixin,{
         + parseFloat($this.css('margin-left'))
         + parseFloat($this.css('margin-right'));
     });
-    $container.width( (totalWidth / 3) + 30 );
+    $container.width( (totalWidth / 3) + 40 );
   }.on('didInsertElement'),
 
 });

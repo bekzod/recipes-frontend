@@ -59,7 +59,7 @@ export default Ember.Component.extend({
       .text( tag.name )
       .appendTo( this.$('.twitter-typeahead') );
 
-    var tagWidth = $tag.outerWidth();
+    var tagWidth = $tag.outerWidth()+1;
     var tagHeight = $tag.outerHeight();
     var originPos = $tag.offset();
 
