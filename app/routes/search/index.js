@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var url = '/__proxy/api/recipe';
+var url = '/__/proxy/api/recipe';
 
 export default Ember.Route.extend({
   actions: {
