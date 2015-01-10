@@ -1,5 +1,6 @@
 .type-ahead-container{
   text-align: center;
+  margin-top: 50px;
 }
 
 .twitter-typeahead{
@@ -40,17 +41,17 @@
 }
 
 .tt-dropdown-menu {
+  // border: 1px solid #ccc;
   width:360px;
   color: white;
   box-sizing: border-box;
   padding: 8px 0 8px 0;
-  // border-radius: 8px;
-  // border: 1px solid #ccc;
-  background:none;
+  border-radius-bottom: 8px;
+  background: rgba(1,1,1,.2);
 }
 
 .tt-suggestion {
-  padding: 3px 20px;
+  padding: 3px 20px 5px 20px;
   font-size: 18px;
   line-height: 24px;
   background: none;

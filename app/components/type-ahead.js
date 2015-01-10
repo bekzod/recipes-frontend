@@ -48,8 +48,8 @@ export default Ember.Component.extend({
         })
         .addClass('animated wobble');
     } else {
-      this.get('tags').pushObject(tag);
-      this.createTag(tag, true);
+        this.get('tags').pushObject(tag);
+        this.createTag(tag, true);
     }
   },
 

@@ -3,10 +3,10 @@
 
     <h2>{{model.length}} recipes found</h2>
     <div class="recipes-container">
-      {{#each item in model}}
-        {{!-- {{#link-to 'recipe' item}} --}}
-          {{recipe-item title=item.name image=item.image tags=item.ingredientsMissing}}
-        {{!-- {{/link-to}} --}}
+      {{#each item in model itemController='recipe-item-wrapper'}}
+        {{#link-to 'recipe' item._id}}
+          {{recipe-item  image=item.image title=item.name tags=item.tags}}
+        {{/link-to}}
       {{/each}}
     </div>
   </div>

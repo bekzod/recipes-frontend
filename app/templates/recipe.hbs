@@ -1,2 +1,15 @@
+{{#if imageUrl}}
+  <img {{bind-attr src='imageUrl'}} alt="">
+{{/if}}
+
 {{#link-to 'search'}} <h2>Search for other recipes</h2> {{/link-to}}
-<h1>{{name}}</h1>
+<h1>{{model.name}}</h1>
+{{#each ingredient in model.ingredientsDetail}}
+  {{ingredient.title}}
+  <ol>
+    {{#each item in ingredient.ingredients}}
+      <li>{{{item}}}</li>
+    {{/each}}
+  </ol>
+{{/each}}
+{{model.instructions}}

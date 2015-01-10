@@ -3,7 +3,9 @@
 <div class='tags-container'>
   <div class='tags-sub-container'>
     {{#each tag in tags}}
-      <div class='tag'>{{tag}}</div>
+      <div {{bind-attr class='tag.selected:tag-exisiting:tag-missing :tag'}}>
+        {{tag.name}}
+      </div>
     {{/each}}
   </div>
 </div>

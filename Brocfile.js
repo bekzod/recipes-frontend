@@ -4,7 +4,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
 
-app.import('bower_components/_normalize.scss/_normalize.scss');
+app.import('bower_components/normalize.css/normalize.css');
 app.import('bower_components/animate.css/animate.min.css');
 app.import('bower_components/nprogress/nprogress.css');
 

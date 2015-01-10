@@ -42,16 +42,16 @@ export default Ember.Component.extend(ClickOutsideMixin,{
     }.bind(this));
   }.observes('isTagsHidden'),
 
-  adjustSizeOfItemContainer: function(){
-    var totalWidth = 0;
-    var $container = this.$('.tags-sub-container');
-    $container.find('.tag').each( function(){
-      var $this = $(this)
-      totalWidth += $this.outerWidth()
-        + parseFloat($this.css('margin-left'))
-        + parseFloat($this.css('margin-right'));
-    });
-    $container.width( (totalWidth / 3) + 40 );
-  }.on('didInsertElement'),
+  // adjustSizeOfItemContainer: function(){
+  //   var totalWidth = 0;
+  //   var $container = this.$('.tags-sub-container');
+  //   $container.find('.tag').each( function(){
+  //     var $this = $(this)
+  //     totalWidth += $this.outerWidth()
+  //       + parseFloat($this.css('margin-left'))
+  //       + parseFloat($this.css('margin-right'));
+  //   });
+  //   $container.width( (totalWidth / 3) + 40 );
+  // }.on('didInsertElement'),
 
 });
