@@ -31,14 +31,14 @@ export default Ember.TextField.extend({
     })
     .on('typeahead:autocompleted', function (e, tag) {
       Em.run(this, function(){ this.set('value', tag.name); });
-      this.$().css('border-color',tag.color);
+      this.$().css('border-color', tag.color);
     }.bind(this))
     .on('typeahead:selected', function (e, tag) {
-      Em.run.schedule('afterRender',this, function(){ this.set('value',''); });
+      Em.run.schedule('afterRender', this, function(){ this.set('value',''); });
       this.sendAction('tagSelect', tag);
     }.bind(this))
     .on('typeahead:cursorchanged typeahead:match', function(e,tag){
-      this.$().css('border-color',tag.color);
+      this.$().css('border-color', tag.color);
     }.bind(this))
     .on('typeahead:cursorremoved typeahead:nomatch', function(){
       this.$().css( 'border-color', 'white');
