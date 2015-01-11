@@ -17,22 +17,33 @@
 
   <div class="content">
     <h1>{{model.name}}</h1>
-    <div class="ingredients">
-      <div class='ingredients-title'>Ingredients</div>
-      {{#each ingredient in model.ingredientsDetail}}
-        {{#if ingredient.title}}
-          <div class='ingredients-title'>{{ingredient.title}}</div>
-        {{/if}}
-        <ol>
-          {{#each item in ingredient.ingredients}}
-            <li>{{{item}}}</li>
-          {{/each}}
-        </ol>
-      {{/each}}
+
+    <div class='main-content'>
+      <div class="ingredients">
+        <div class='ingredients-title'>Ingredients</div>
+        {{#each ingredient in model.ingredientsDetail}}
+          {{#if ingredient.title}}
+            <div class='ingredients-sub-title'>{{ingredient.title}}</div>
+          {{/if}}
+          <ol>
+            {{#each item in ingredient.ingredients}}
+              <li>{{{item}}}</li>
+            {{/each}}
+          </ol>
+        {{/each}}
+      </div>
+
+      <div class="tag-container">
+        {{#each ingredient in model.ingredients}}
+          <div class='tag tag-existing'>{{ingredient}}</div>
+        {{/each}}
+      </div>
     </div>
 
     <div class='instruction'>
-      {{model.instructions}}
+      {{#each paragraph in model.instructions}}
+        <p>{{paragraph}}</p>
+      {{/each}}
     </div>
   </div>
 

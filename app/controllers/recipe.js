@@ -12,6 +12,6 @@ export default Ember.Controller.extend({
         blured: host + '/blured/' + name
       }
     }
-  }.property('model.image'),
+  }.property('model.image')
 
 });

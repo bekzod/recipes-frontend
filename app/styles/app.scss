@@ -29,7 +29,7 @@ a, a:hover, a:active {
   .title {
     display: inline-block;
     color:#1C2834;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 300;
   }
 
@@ -73,7 +73,7 @@ h1,h2,h3,h4{
 .recipe-page {
   background: #eee;
   color:#1C2834;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
   border-radius:8px;
   margin-top: 50px;
   margin-bottom: 100px;
@@ -82,6 +82,7 @@ h1,h2,h3,h4{
     position: relative;
     overflow: hidden;
     height: 344px;
+    margin-bottom: 50px;
 
     img.forground {
       width: 608px;
@@ -109,17 +110,31 @@ h1,h2,h3,h4{
   }
 
   .content {
-    padding: 0 80px 0 50px;
+    padding: 0 100px 0 60px;
   }
 
   h1 {
     left: 90px;
     font-weight: 400;
     color: #1C2834;
+    line-height: 34px;
+    margin-bottom: 15px;
+  }
+
+  .main-content {
+    width: 100%;
+    overflow: auto;
   }
 
   .ingredients {
+    float:left;
+    width: 60%;
     .ingredients-title{
+      margin-top: 12px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+    .ingredients-sub-title{
       margin-top: 12px;
       font-size: 18px;
     }
@@ -129,10 +144,40 @@ h1,h2,h3,h4{
     }
   }
 
+  .tag-container {
+    float:right;
+    width: 40%;
+    margin-top: 70px;
+    .tag {
+      font-weight: 400;
+    }
+  }
+
   .instruction {
-    margin-top: 26px;
+    margin-top: 24px;
     width: 100%;
     box-sizing: border-box;
+    p {
+      margin-bottom:0;
+    }
+  }
+}
+
+div.tag, a.tag {
+  @extend %disable-select;
+  float:right;
+  margin: 4px;
+  padding: 2px 6px;
+  font-weight: 100;
+  font-size: 14px;
+  border-radius: 15px;
+  &.tag-missing{
+    color: #bbb;
+    border: 2px #bbb solid;
+  }
+  &.tag-existing{
+    color: #F9319F;
+    border: 2px #F9319F solid;
   }
 }
 
@@ -162,7 +207,7 @@ h1,h2,h3,h4{
     top:10px;
     z-index: 10;
     position: absolute;
-    width:50%;
+    width:46%;
     font-size: 23px;
     color: #fff;
     font-weight: 100;
@@ -179,24 +224,6 @@ h1,h2,h3,h4{
 
     .tags-sub-container{
       height:100%;
-      .tag {
-        @extend %disable-select;
-        float:right;
-        margin: 4px;
-        padding: 2px 6px;
-        font-weight: 100;
-        font-size: 14px;
-        border-radius: 15px;
-      }
-      .tag-missing{
-        color: #F9319F;
-        border: 2px #F9319F solid;
-      }
-      .tag-exisiting{
-        color: white;
-        border: 2px white solid;
-      }
-
     }
   }
 }
