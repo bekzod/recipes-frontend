@@ -20,7 +20,29 @@ a, a:hover, a:active {
 
 .top-bar {
   height: 70px;
-  padding-top: 30px;
+  padding: 30px 50px 0 50px;
+  text-align:center;
+  .button.arrow-left {
+    display: block;
+    float: left;
+  }
+  .title {
+    display: inline-block;
+    color:#1C2834;
+    font-size: 32px;
+    font-weight: 300;
+  }
+
+  .space-small{
+    width: 150px;
+    height: 100%;
+    &.right {
+      float: right;
+    }
+    &.left {
+      float: left;
+    }
+  }
 }
 .container{
   width:800px;
@@ -92,7 +114,7 @@ h1,h2,h3,h4{
 
   h1 {
     left: 90px;
-    font-weight: 600;
+    font-weight: 400;
     color: #1C2834;
   }
 
