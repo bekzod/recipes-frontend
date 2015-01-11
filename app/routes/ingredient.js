@@ -32,7 +32,13 @@ export default Ember.Route.extend({
 
   model: function(param){
     var url = '/__/proxy/api/ingredient/' + param.ingredient;
-    return ic.ajax.request( url );
+    return ic.ajax.request( url )
+      .then(function(ingredient){
+        if(!ingredient.decription && !ingredient.image ){
+          return Em.RSVP.reject();
+        }
+        return ingredient;
+      });
   }
 
 });
