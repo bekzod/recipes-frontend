@@ -20,7 +20,7 @@ var engine = new Bloodhound({
 });
 
 export default Ember.TextField.extend({
-
+  autocomplete: "off",
   initTypeAhead: function(){
     engine.initialize();
     this.typeahead = this.$().typeahead({
