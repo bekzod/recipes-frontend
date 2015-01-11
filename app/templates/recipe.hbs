@@ -1,15 +1,39 @@
-{{#if imageUrl}}
-  <img {{bind-attr src='imageUrl'}} alt="">
-{{/if}}
+<div class="recipe-page">
+  <div class="content">
+    <div class="top-bar">
+      {{#link-to 'search.index' class='button arrow-left'}}
+        search more
+      {{/link-to}}
+    </div>
+  </div>
 
-{{#link-to 'search'}} <h2>Search for other recipes</h2> {{/link-to}}
-<h1>{{model.name}}</h1>
-{{#each ingredient in model.ingredientsDetail}}
-  {{ingredient.title}}
-  <ol>
-    {{#each item in ingredient.ingredients}}
-      <li>{{{item}}}</li>
-    {{/each}}
-  </ol>
-{{/each}}
-{{model.instructions}}
+  {{#if images}}
+    {{#image-loader class='food-image-container'}}
+      <img class='background' {{bind-attr src=images.blured}} alt="">
+      <div class="background-overlay"></div>
+      <img class='forground' {{bind-attr src=images.original}} alt="">
+    {{/image-loader}}
+  {{/if}}
+
+  <div class="content">
+    <h1>{{model.name}}</h1>
+    <div class="ingredients">
+      <div class='ingredients-title'>Ingredients</div>
+      {{#each ingredient in model.ingredientsDetail}}
+        {{#if ingredient.title}}
+          <div class='ingredients-title'>{{ingredient.title}}</div>
+        {{/if}}
+        <ol>
+          {{#each item in ingredient.ingredients}}
+            <li>{{{item}}}</li>
+          {{/each}}
+        </ol>
+      {{/each}}
+    </div>
+
+    <div class='instruction'>
+      {{model.instructions}}
+    </div>
+  </div>
+
+</div>

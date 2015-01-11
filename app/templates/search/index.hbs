@@ -9,7 +9,15 @@
     </div>
   </div>
 {{else}}
-
-  <div class='title-with-margin'>No recipes found</div>
-
+  {{#if tags.length}}
+    <div class='title-with-margin'>
+      {{#if toMuchAttempts}}
+         try with different ingredients
+      {{else}}
+        no recipes found
+      {{/if}}
+    </div>
+  {{else}}
+    <div class='title-with-margin'>search for recipes</div>
+  {{/if}}
 {{/if}}

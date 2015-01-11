@@ -1,4 +1,5 @@
 @import 'type_ahead';
+@import 'nprogress';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -9,16 +10,6 @@ a, a:hover, a:active {
   text-decoration: none
 }
 
-#nprogress {
-  .bar {
-    background: #A7C520;
-  }
-  .spinner-icon {
-    display: none;
-  }
-}
-
-
 %disable-select {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -27,10 +18,13 @@ a, a:hover, a:active {
   cursor:default;
 }
 
+.top-bar {
+  height: 70px;
+  padding-top: 30px;
+}
 .container{
   width:800px;
   margin:0 auto;
-  padding-bottom:200px;
 }
 
 .title-with-margin {
@@ -51,7 +45,73 @@ h1,h2,h3,h4{
 }
 
 .search-result {
+  margin-bottom: 200px;
+}
 
+.recipe-page {
+  background: #eee;
+  color:#1C2834;
+  padding-bottom: 50px;
+  border-radius:8px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+  .food-image-container{
+    position: relative;
+    overflow: hidden;
+    height: 344px;
+
+    img.forground {
+      width: 608px;
+      height: 344px;
+      position:absolute;
+      top:0;
+      left: 86px;
+      display: block;
+    }
+    .background-overlay {
+      opacity: .3;
+      background:black;
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    img.background {
+      position:absolute;
+      display: block;
+      left: -10px;
+      top: -66px;
+    }
+  }
+
+  .content {
+    padding: 0 80px 0 50px;
+  }
+
+  h1 {
+    left: 90px;
+    font-weight: 600;
+    color: #1C2834;
+  }
+
+  .ingredients {
+    .ingredients-title{
+      margin-top: 12px;
+      font-size: 18px;
+    }
+    ol {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+  }
+
+  .instruction {
+    margin-top: 26px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 
@@ -66,7 +126,7 @@ h1,h2,h3,h4{
 
 
   .background-overlay{
-    opacity: .35;
+    opacity: .3;
     background: black;
     width: 100%;
     height: 100%;
@@ -82,7 +142,7 @@ h1,h2,h3,h4{
     position: absolute;
     width:50%;
     font-size: 23px;
-    color: #ddd;
+    color: #fff;
     font-weight: 100;
   }
 
@@ -119,4 +179,26 @@ h1,h2,h3,h4{
   }
 }
 
+.button {
+  height: 42px;
+  background: none;
+  border-radius: 20px;
+  border: 2px #F9319F solid;
+  color: #F9319F;
+  font-size: 21px;
+  line-height: 36px;
+  font-weight: 30;
+  padding: 0 17px;
+  box-sizing: border-box;
+  display: inline-block;
 
+  &.arrow-left {
+    background: url(../img/arrow-left.png) no-repeat 10px center;
+    padding-left:45px;
+  }
+
+  &.arrow-right {
+    background: url(../img/arrow-right.png) no-repeat 0 center;
+    padding-right:40px;
+  }
+}

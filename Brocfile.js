@@ -6,7 +6,6 @@ var app = new EmberApp();
 
 app.import('bower_components/normalize.css/normalize.css');
 app.import('bower_components/animate.css/animate.min.css');
-app.import('bower_components/nprogress/nprogress.css');
 
 app.import('bower_components/nprogress/nprogress.js');
 app.import('bower_components/typeahead-hacked/type-ahead-hacked.js');

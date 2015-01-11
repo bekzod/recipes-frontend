@@ -10,8 +10,10 @@ export default Ember.Route.extend({
       NProgress.done();
     }
   },
-  redirect: function() {
-    this.transitionTo('search');
+  redirect: function(model, transition) {
+    if( transition.targetName === 'index' ){
+      this.transitionTo('search');
+    }
   }
 
 });
