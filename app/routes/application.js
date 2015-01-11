@@ -8,6 +8,10 @@ export default Ember.Route.extend({
     },
     didTransition: function(){
       NProgress.done();
+    },
+    error: function(err,transition){
+      transition.abort();
+      this.transitionTo('search');
     }
   },
   redirect: function(model, transition) {
