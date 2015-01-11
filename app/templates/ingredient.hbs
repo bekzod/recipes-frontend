@@ -1,0 +1,27 @@
+<div class="recipe-page">
+  <div class="top-bar">
+    <a {{action 'goBack'}} class="button arrow-left">
+      {{model.previosRouteName}}
+    </a>
+    <span class="title">Ingredient</span>
+    <div class="space-small right"></div>
+  </div>
+
+  {{#if images}}
+    {{#image-loader class='food-image-container'}}
+      <img class='background' {{bind-attr src=images.blured}} alt="">
+      <div class="background-overlay"></div>
+      <img class='forground' {{bind-attr src=images.original}} alt="">
+    {{/image-loader}}
+  {{/if}}
+
+  <div class="content">
+    <h1>{{model.name}}</h1>
+
+
+    <div class='instruction'>
+      {{model.description}}
+    </div>
+  </div>
+
+</div>

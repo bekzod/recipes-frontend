@@ -35,7 +35,9 @@
 
       <div class="tag-container">
         {{#each ingredient in model.ingredients}}
-          <div class='tag tag-existing'>{{ingredient}}</div>
+          {{#link-to 'ingredient' ingredient class='tag tag-existing'}}
+            {{ingredient}}
+          {{/link-to}}
         {{/each}}
       </div>
     </div>

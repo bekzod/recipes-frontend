@@ -119,6 +119,7 @@ h1,h2,h3,h4{
     color: #1C2834;
     line-height: 34px;
     margin-bottom: 15px;
+    text-transform: capitalize;
   }
 
   .main-content {
@@ -165,12 +166,14 @@ h1,h2,h3,h4{
 
 div.tag, a.tag {
   @extend %disable-select;
-  float:right;
+  float: right;
   margin: 4px;
-  padding: 2px 6px;
+  padding: 2px 6px 3px 7px;
   font-weight: 100;
   font-size: 14px;
   border-radius: 15px;
+  line-height: 16px;
+
   &.tag-missing{
     color: #bbb;
     border: 2px #bbb solid;
@@ -179,6 +182,9 @@ div.tag, a.tag {
     color: #F9319F;
     border: 2px #F9319F solid;
   }
+}
+a.tag{
+  cursor:pointer;
 }
 
 
@@ -231,6 +237,7 @@ div.tag, a.tag {
 .button {
   height: 42px;
   background: none;
+  cursor: pointer;
   border-radius: 20px;
   border: 2px #F9319F solid;
   color: #F9319F;
