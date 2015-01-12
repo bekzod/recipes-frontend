@@ -20,7 +20,7 @@
 
     <div class='main-content'>
       <div class="ingredients">
-        <div class='ingredients-title'>Ingredients</div>
+        <div class='ingredients-title'>Ingredients <span class='sub-title'> for {{model.yield}}</span></div>
         {{#each ingredient in model.ingredientsDetail}}
           {{#if ingredient.title}}
             <div class='ingredients-sub-title'>{{ingredient.title}}</div>
