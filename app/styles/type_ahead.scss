@@ -4,7 +4,9 @@
 }
 
 .twitter-typeahead{
-  text-align: left;
+  display: block !important;
+  max-width: 360px;
+  margin: 0 auto;
 }
 
 .cc-input{
@@ -26,7 +28,7 @@
 .tt-input, .tt-hint {
   @extend .cc-input;
   outline: none;
-  width:360px;
+  width:100%;
   background: none !important;
   appearance: none;
   -webkit-appearance: none;
@@ -46,7 +48,7 @@
 .tt-dropdown-menu {
   // border: 1px solid #ccc;
   top:36px !important;
-  width:360px;
+  width:100%;
   color: white;
   box-sizing: border-box;
   padding: 8px 0 0px 0;
@@ -61,6 +63,7 @@
   font-size: 18px;
   line-height: 24px;
   background: none;
+  text-align: left;
   p {
     margin: 0;
   }
