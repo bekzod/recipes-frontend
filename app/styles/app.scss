@@ -20,17 +20,26 @@ a, a:hover, a:active {
 
 .top-bar {
   height: 70px;
-  padding: 30px 50px 0 50px;
-  text-align:center;
+  padding: 30px 30px 0 30px;
+  position: relative;
+
   .button.arrow-left {
+    float:left;
     display: block;
-    float: left;
+    z-index: 200;
   }
+
   .title {
-    display: inline-block;
     color:#1C2834;
     font-size: 34px;
     font-weight: 300;
+    display: block;
+    position: absolute;
+    text-align: center;
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    z-index: 100;
   }
 
   .space-small{
@@ -44,9 +53,18 @@ a, a:hover, a:active {
     }
   }
 }
+
+
 .container{
-  width:800px;
-  margin:0 auto;
+  width: 100%;
+  max-width: 800px;
+  padding-left:  20px;
+  padding-right: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
+  box-sizing:         border-box;
+  margin-left:  auto;
+  margin-right: auto;
 }
 
 .title-with-margin {
@@ -89,7 +107,8 @@ h1,h2,h3,h4{
       height: 344px;
       position:absolute;
       top:0;
-      left: 86px;
+      left: 50%;
+      margin-left: -304px;
       display: block;
     }
     .background-overlay {
@@ -110,11 +129,16 @@ h1,h2,h3,h4{
   }
 
   .content {
-    padding: 0 100px 0 60px;
+    padding: 0 80px 0 60px;
+    @media screen and (max-width: 700px){
+      padding: 0 60px 0 60px;
+    }
+    @media screen and (max-width: 500px){
+      padding: 0 30px 0 30px;
+    }
   }
 
   h1 {
-    left: 90px;
     font-weight: 400;
     color: #1C2834;
     line-height: 34px;
@@ -127,9 +151,18 @@ h1,h2,h3,h4{
     overflow: auto;
   }
 
+  @media screen and (max-width: 600px){
+    .ingredients,.tags-container{
+      width: 100% !important;
+    }
+    .tags-container a{
+      float:none;
+    }
+  }
+
   .ingredients {
     float:left;
-    width: 60%;
+    width: 55%;
     .ingredients-title{
       margin-top: 12px;
       font-size: 20px;
@@ -148,12 +181,14 @@ h1,h2,h3,h4{
     }
   }
 
-  .tag-container {
+  .tags-container {
     float:right;
     width: 40%;
     margin-top: 70px;
+    text-align: center;
     .tag {
       font-weight: 400;
+      display: inline-block;
     }
   }
 
@@ -170,7 +205,7 @@ h1,h2,h3,h4{
 div.tag, a.tag {
   @extend %disable-select;
   float: right;
-  margin: 4px;
+  margin: 4px 6px 4px 0;
   padding: 2px 6px 3px 7px;
   font-weight: 100;
   font-size: 14px;
@@ -220,6 +255,9 @@ a.tag{
     font-size: 23px;
     color: #fff;
     font-weight: 100;
+    @media screen and (max-width:500px){
+      width:90%;
+    }
   }
 
   .tags-container {
@@ -230,16 +268,13 @@ a.tag{
     height: 100%;
     max-width: 50%;
     overflow: hidden;
-
-    .tags-sub-container{
-      height:100%;
+    @media screen and (max-width:500px){
+      display: none;
     }
   }
 }
 
 .button {
-  height: 42px;
-  background: none;
   cursor: pointer;
   border-radius: 20px;
   border: 2px #F9319F solid;
@@ -250,6 +285,11 @@ a.tag{
   padding: 0 17px;
   box-sizing: border-box;
   display: inline-block;
+
+  @media screen and (max-width: 500px){
+    font-size:0;
+    padding: 0 2px;
+  }
 
   &.arrow-left {
     background: url(../img/arrow-left.png) no-repeat 10px center;

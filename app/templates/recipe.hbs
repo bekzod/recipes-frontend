@@ -1,10 +1,9 @@
 <div class="recipe-page">
   <div class="top-bar">
+    <span class="title">Recipe</span>
     {{#link-to 'search.index' class='button arrow-left'}}
       search
     {{/link-to}}
-    <span class="title">Recipe</span>
-    <div class="space-small right"></div>
   </div>
 
   {{#if images}}
@@ -20,7 +19,11 @@
 
     <div class='main-content'>
       <div class="ingredients">
-        <div class='ingredients-title'>Ingredients <span class='sub-title'> for {{model.yield}}</span></div>
+        <div class='ingredients-title'>Ingredients
+        {{#if model.yield}}
+          <span class='sub-title'>for {{model.yield}}</span>
+        {{/if}}
+        </div>
         {{#each ingredient in model.ingredientsDetail}}
           {{#if ingredient.title}}
             <div class='ingredients-sub-title'>{{ingredient.title}}</div>
@@ -33,7 +36,7 @@
         {{/each}}
       </div>
 
-      <div class="tag-container">
+      <div class="tags-container">
         {{#each ingredient in model.ingredients}}
           {{#link-to 'ingredient' ingredient class='tag tag-existing'}}
             {{ingredient}}
