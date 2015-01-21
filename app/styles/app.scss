@@ -65,6 +65,7 @@ a, a:hover, a:active {
   box-sizing:         border-box;
   margin-left:  auto;
   margin-right: auto;
+  min-height: 500px;
 }
 
 .title-with-margin {
@@ -157,7 +158,7 @@ h1,h2,h3,h4{
     }
     .tags-container {
       width: 100% !important;
-      margin-top: 10px;
+      margin-top: 20px !important;
       a {
         float:none;
       }

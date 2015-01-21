@@ -43,7 +43,6 @@ export default Ember.TextField.extend({
     .on('typeahead:cursorremoved typeahead:nomatch', function(){
       this.$().css( 'border-color', 'white');
     }.bind(this))
-
   }.on('didInsertElement'),
 
   syncValue: function(){
