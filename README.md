@@ -1,6 +1,7 @@
 # Recepies App 
 
-[Link to App](recipes.banerma.com)
+[Link to App](http://recipes.banerma.com)
+[Backend repo](https://github.com/bekzod/recipes-backend)
 
 ## Prerequisites
 
