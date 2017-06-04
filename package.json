@@ -18,22 +18,22 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "broccoli-asset-rev": "^1.0.0",
-    "ember-cli": "0.1.4",
-    "ember-cli-content-security-policy": "0.3.0",
-    "ember-cli-dependency-checker": "0.0.6",
+    "broccoli-asset-rev": "^2.5.0",
+    "ember-cli": "2.13.2",
+    "ember-cli-content-security-policy": "0.6.1",
+    "ember-cli-dependency-checker": "2.0.0",
     "ember-cli-divshot": "^0.1.6",
     "ember-cli-esnext": "0.1.1",
-    "ember-cli-htmlbars": "^0.6.0",
-    "ember-cli-ic-ajax": "0.1.1",
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-ic-ajax": "1.0.0",
     "ember-cli-inject-live-reload": "^1.3.0",
-    "ember-cli-qunit": "0.1.2",
-    "ember-cli-sass": "^3.1.0-beta",
-    "ember-export-application-global": "^1.0.0",
+    "ember-cli-qunit": "4.0.0",
+    "ember-cli-sass": "^6.2.0",
+    "ember-export-application-global": "^2.0.0",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "^7.1.2"
   },
   "dependencies": {
-    "ember-cli-autoprefixer": "^0.2.0"
+    "ember-cli-autoprefixer": "^0.7.0"
   }
 }
