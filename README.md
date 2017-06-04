@@ -1,5 +1,7 @@
 # Recepies App 
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bekzod/recipes-frontend.svg)](https://greenkeeper.io/)
+
 [Link to App](http://recipes.banerma.com)
 [Backend repo](https://github.com/bekzod/recipes-backend)
 
